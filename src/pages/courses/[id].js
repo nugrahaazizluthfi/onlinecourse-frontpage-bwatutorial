@@ -12,9 +12,9 @@ import Feature from 'src/parts/Details/Feature';
 import FormatThousand from 'src/helpers/FormatThousand';
 
 import Footer from 'src/parts/Footer';
+import CoursePhoto from 'src/parts/Details/CoursePhoto';
 
 const DetailCourses = ({ data }) => {
-  console.log(data);
   const footer = useRef(null);
   const [isSticky, setIsSticky] = useState(() => true);
 
@@ -143,6 +143,22 @@ const DetailCourses = ({ data }) => {
               <p className="text-gray-600 text-lg leading-relaxed mb-3">
                 {data?.description ?? 'No Description Found'}
               </p>
+            </section>
+            <section className="mt-10">
+              <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                Course <span className="text-teal-500">Photos</span>
+              </h6>
+              <div className="flex justify-start items center -mx-4 mt-6">
+                {data?.images?.length > 0 ? (
+                  data?.images?.map?.((photo, index) => {
+                    return (
+                      <CoursePhoto data={photo.image} key={index}></CoursePhoto>
+                    );
+                  })
+                ) : (
+                  <div className="w-full text-center py-12">No Item Found</div>
+                )}
+              </div>
             </section>
           </div>
         </div>
