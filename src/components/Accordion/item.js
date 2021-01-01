@@ -39,7 +39,9 @@ export default function Item({ name, id, child, active, toggle, children }) {
           onEnter={calcHeight}
           classNames="accordion-item"
         >
-          <div className="accordion-item py-2 bg-gray-100">{children}</div>
+          <div className="accordion-item">
+            <div className="py-2 bg-gray-100">{children}</div>
+          </div>
         </CSSTransition>
       </div>
     </div>
