@@ -30,8 +30,7 @@ export default function RenderPreview({ previews }) {
                       <span className="text-gray-600">
                         {child?.name ?? 'Course name'}
                       </span>
-                      {(index2 === 0) &
-                      (
+                      {index2 === 0 && (
                         <Modal
                           content={(toggleModal) => (
                             <Youtube

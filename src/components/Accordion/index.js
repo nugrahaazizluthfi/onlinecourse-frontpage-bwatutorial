@@ -9,7 +9,7 @@ export default function Accordion({ children }) {
   const [active, setActive] = useState(() => null);
 
   function toggle(id) {
-    setActive((pref) => (prev === id ? null : id));
+    setActive((prev) => (prev === id ? null : id));
   }
 
   return <div className="accordion">{children(active, toggle)}</div>;
