@@ -15,6 +15,7 @@ import Footer from 'src/parts/Footer';
 import CoursePhoto from 'src/parts/Details/CoursePhoto';
 
 import RenderPreview from 'src/parts/Details/RenderPreview';
+import HappyStudent from 'src/parts/Details/HappyStudent';
 
 const DetailCourses = ({ data }) => {
   const footer = useRef(null);
@@ -196,6 +197,17 @@ const DetailCourses = ({ data }) => {
                   </h3>
                 </div>
               </div>
+            </section>
+
+            <section className="mt-10">
+              <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                Happy <span className="text-teal-500">Student</span>
+              </h6>
+              {data.review?.map((testimonial, index) => {
+                return (
+                  <HappyStudent key={index} data={testimonial}></HappyStudent>
+                );
+              })}
             </section>
           </div>
         </div>
