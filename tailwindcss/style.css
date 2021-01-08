@@ -208,3 +208,31 @@
 .accordion-item-exit-active {
   opacity: 0;
 }
+
+svg#svg-star {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9999px;
+  top: -9999px;
+}
+
+.stars {
+  @apply relative inline-flex;
+  min-width: 200px;
+}
+
+.stars .star {
+  @apply absolute;
+  clip-path: url(#star);
+}
+
+.stars .star:not(.placeholder) {
+  z-index: 2;
+  @apply bg-yellow-400;
+}
+
+.stars .star.placeholder {
+  z-index: 2;
+  @apply bg-yellow-400;
+}
