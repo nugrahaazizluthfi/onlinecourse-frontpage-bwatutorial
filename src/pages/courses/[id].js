@@ -186,7 +186,7 @@ const DetailCourses = ({ data }) => {
                     'http://media.bwamicro.com/images/1593527439774.png'
                   }
                   alt={data?.mentor?.name ?? ''}
-                  className="w-20 rounded-full overflow-hidden object-cover"
+                  className="w-20 h-20 rounded-full overflow-hidden object-cover"
                 />
                 <div className="ml-4">
                   <h2 className="text-lg text-gray-900">
@@ -203,7 +203,7 @@ const DetailCourses = ({ data }) => {
               <h6 className="font-medium text-gray-900 text-2xl mb-4">
                 Happy <span className="text-teal-500">Student</span>
               </h6>
-              {data.review?.map((testimonial, index) => {
+              {data.reviews?.map((testimonial, index) => {
                 return (
                   <HappyStudent key={index} data={testimonial}></HappyStudent>
                 );

@@ -14,7 +14,7 @@ export default function HappyStudent({ data }) {
               'http://media.bwamicro.com/images/1593527439774.png'
             }
             alt={data?.users?.name ?? 'students name'}
-            className="object-cover"
+            className="object-cover w-14 h-14"
           />
         </div>
         <div className="ml-4">
