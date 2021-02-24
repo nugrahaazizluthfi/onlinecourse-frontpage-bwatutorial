@@ -1,39 +1,43 @@
-import React from 'react';
+import React from "react";
 
 export default function Clients() {
-  const clients = [
-    {
-      logo: 'logo-amazon.svg',
-      alt: 'logo-amazon',
-    },
-    {
-      logo: 'logo-microsoft.svg',
-      alt: 'logo-microsoft',
-    },
-    {
-      logo: 'logo-tesla.svg',
-      alt: 'logo-tesla',
-    },
-    {
-      logo: 'logo-google.svg',
-      alt: 'logo-google',
-    },
-    {
-      logo: 'logo-facebook.svg',
-      alt: 'logo-facebook',
-    },
-  ];
   return (
-    <div className="flex justify-center">
-      {clients.map((client, index) => (
-        <div className="w-1/6" key={index}>
-          <img
-            src={`/images/${client.logo}`}
-            alt={client.alt}
-            className="mx-auto"
-          />
-        </div>
-      ))}
+    <div className="flex flex-wrap justify-center items-center">
+      <div className="w-full sm:w-1/6 mb-8 md:mb-0">
+        <img
+          src="/images/logo-amazon.svg"
+          alt="logo amazon"
+          className="mx-auto"
+        />
+      </div>
+      <div className="w-full sm:w-1/6 mb-8 md:mb-0">
+        <img
+          src="/images/logo-microsoft.svg"
+          alt="logo microsoft"
+          className="mx-auto"
+        />
+      </div>
+      <div className="w-full sm:w-1/6 mb-8 md:mb-0">
+        <img
+          src="/images/logo-tesla.svg"
+          alt="logo tesla"
+          className="mx-auto"
+        />
+      </div>
+      <div className="w-full sm:w-1/6 mb-8 md:mb-0">
+        <img
+          src="/images/logo-google.svg"
+          alt="logo google"
+          className="mx-auto"
+        />
+      </div>
+      <div className="w-full sm:w-1/6 mb-8 md:mb-0">
+        <img
+          src="/images/logo-facebook.svg"
+          alt="logo facebook"
+          className="mx-auto"
+        />
+      </div>
     </div>
   );
 }

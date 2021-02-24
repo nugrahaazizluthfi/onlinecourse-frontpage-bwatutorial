@@ -1,37 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react';
-import propTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
+import React, { useState, useEffect, useRef } from "react";
+import propTypes from "prop-types";
+import { createPortal } from "react-dom";
+
+import { CSSTransition } from "react-transition-group";
 
 export default function Modal(props) {
-  const [ready, setReady] = useState(() => false);
-  const [display, setDisplay] = useState(() => false);
-  const [allow, setAllow] = useState(() => true);
+  const [Ready, setReady] = useState(() => false);
+  const [Display, setDisplay] = useState(() => false);
+  const [Allow, setAllow] = useState(() => true);
 
-  const modalRef = useRef(null);
-  const idModal = 'modal';
+  const ModalRef = useRef(null);
+  const idModal = "modal";
 
   function toggleAllow() {
-    setAllow(!allow);
+    setAllow(!Allow);
   }
 
   function toggle() {
     if (props.toggleModal) props.toggleModal();
-    else setDisplay(!display);
+    else setDisplay(!Display);
   }
 
   function handleClickOutside(event) {
     if (
-      modalRef?.current &&
-      !modalRef?.current?.contains?.(event.target) &&
-      allow
+      ModalRef?.current &&
+      !ModalRef?.current?.contains?.(event.target) &&
+      Allow
     )
       toggle();
   }
 
   useEffect(() => {
-    const rootContainer = document.createElement('div');
-    rootContainer.setAttribute('id', idModal);
+    const rootContainer = document.createElement("div");
+    rootContainer.setAttribute("id", idModal);
     setReady(true);
 
     if (!document.getElementById(idModal))
@@ -39,22 +40,22 @@ export default function Modal(props) {
   }, []);
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   });
 
   useEffect(() => {
-    if (display || props.in) {
-      document.querySelector('body').classList.add('modal-open');
+    if (Display || props.in) {
+      document.querySelector("body").classList.add("modal-open");
     }
-
     return () => {
-      document.querySelector('body').classList.remove('modal-open');
+      document.querySelector("body").classList.remove("modal-open");
     };
-  }, [display, props.in]);
-  if (!ready) return null;
+  }, [Display, props.in]);
+
+  if (!Ready) return null;
 
   return (
     <>
@@ -63,7 +64,7 @@ export default function Modal(props) {
         <div>
           {createPortal(
             <CSSTransition
-              in={props.in ?? display}
+              in={props.in ?? Display}
               timeout={500}
               onExit={toggleAllow}
               onExited={toggleAllow}
@@ -75,13 +76,14 @@ export default function Modal(props) {
                 <div className="absolute z-20 flex items-center justify-center inset-0">
                   <div
                     style={props.modalStyle}
-                    ref={modalRef}
-                    className="bg-white shadow-2xl max-w-3xl max-h-2xl"
+                    ref={ModalRef}
+                    className="bg-white shadow-2xl w-full md:w-auto max-h-2xl md:max-w-3xl "
                   >
                     <div className="relative">
-                      <div className="modal-close" onClick={toggle}></div>
-                      {props.content(toggle)}
+                      <span className="modal-close" onClick={toggle}></span>
                     </div>
+
+                    {props.content(toggle)}
                   </div>
                 </div>
               </div>

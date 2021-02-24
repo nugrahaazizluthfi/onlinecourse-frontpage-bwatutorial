@@ -1,23 +1,22 @@
-import React from 'react';
+import React from "react";
 
-import Youtube from 'react-youtube';
+import Youtube from "react-youtube";
 
-import Accordion, { IconLock, IconPlay, Item } from 'src/components/Accordion';
-import Modal from 'src/components/Modal';
+import Accordion, { IconLock, IconPlay, Item } from "src/components/Accordion";
+import Modal from "src/components/Modal";
 
 export default function RenderPreview({ previews }) {
   return (
     <div className="accordion">
       <Accordion>
-        {(active, toggle) => {
+        {(Active, toggle) => {
           return previews?.map((item, index) => {
-            console.log(item);
             return (
               <Item
                 id={item.id}
                 name={item.name}
                 child={item.lessons}
-                active={active}
+                active={Active}
                 toggle={toggle}
                 key={`${index}-${item.id}`}
               >
@@ -28,12 +27,13 @@ export default function RenderPreview({ previews }) {
                       className="relative hover:bg-gray-200 flex justify-between items-center pl-8 pr-4 py-2"
                     >
                       <span className="text-gray-600">
-                        {child?.name ?? 'Course name'}
+                        {child?.name ?? "Course name"}
                       </span>
                       {index2 === 0 && (
                         <Modal
                           content={(toggleModal) => (
                             <Youtube
+                              className="w-full"
                               videoId={child?.video}
                               id={child?.video}
                               opts={{
@@ -61,7 +61,8 @@ export default function RenderPreview({ previews }) {
                           height={20}
                         ></IconPlay>
                       )}
-                      {!child.isPreview && index2 !== 0 && <IconLock />}
+
+                      {index2 !== 0 && <IconLock></IconLock>}
                     </div>
                   ))}
               </Item>
